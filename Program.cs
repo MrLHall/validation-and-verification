@@ -15,15 +15,17 @@ namespace validation_and_verification_
             Console.WriteLine("Range check validated");
             return age;
         }
-        static void lengthCheck(string name)
+        static bool lengthCheck(string name)
         {
             if (name.Length>= 2 && name.Length<= 748)
             {
                 Console.WriteLine("Lenth of name is valid");
+                return true;
             }
             else
             {
                 Console.WriteLine("Length of name is not valid");
+                return false;
             }
         }
         static void TypeCheck(string name) 
@@ -61,7 +63,11 @@ namespace validation_and_verification_
             age = rangeCheck(age);
             TypeCheck(name);
             name = PresenceCheck(name);
-            lengthCheck(name);
+            while (lengthCheck(name)!= true)
+            {
+                Console.WriteLine("Enter your name>>");
+                name = Console.ReadLine();
+            }
             string username = name;
             Console.WriteLine("enter your password>>");
             string password = Console.ReadLine();
